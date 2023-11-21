@@ -3,7 +3,7 @@ export default async function New(){
     async function saveCourse (formData: FormData){
         "use server"
         const title = formData.get("title") as string;
-        const descripton = formData.get("description") as string;
+        const description = formData.get("description") as string;
         const url = formData.get ("URL")as string;
         await sql `INSERT INTO courses (title,description,url) VALUES ( ${title},${description},${url} )`
         console.log("Acessou a função")
