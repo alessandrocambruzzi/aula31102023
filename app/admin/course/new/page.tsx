@@ -16,20 +16,19 @@ export default function NewCourse({
 
     async function saveCourse(formData: FormData){
         "use server"
-        const title = formData.get("title") as string;
-        const description = formData.get("description") as string;
-        await sql`INSERT INTO courses (title, description,url) VALUES(${title}, ${description}, ${urlImage})`
+        const nome = formData.get("nome") as string;
+        const email = formData.get("email") as string;
+        await sql`INSERT INTO coordenador (nome, email) VALUES(${nome}, ${email})`
         console.log("Acessou a função")
     }
     return (
         <div>
-            <h1 className="text-white text-center text-4xl">Cadastrar Cursos</h1>
+            <h1 className="text-white text-center text-4xl">Cadastrar Coordenador</h1>
             <form>
-                <input type="text" name="title" placeholder="Digite o Título do Curso"/><br/><br/>
-                <input type="text" name="description" placeholder="Digite a Descriçao do curso"/> <br/><br/>
+                <input type="text" name="nome" placeholder="Nome do Coordenador"/><br/><br/>
+                <input type="text" name="email" placeholder="Email do coordenador"/> <br/><br/>
+                <button formAction={saveCourse} className="text-black">Salvar</button>
                 <br/>
-                <UploadButton />
-                <button formAction={saveCourse} className="text-white">Salvar</button>
             </form>
         </div>
 
